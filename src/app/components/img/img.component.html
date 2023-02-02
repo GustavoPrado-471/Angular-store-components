@@ -1,0 +1,7 @@
+<!-- Este componente va a estar desing for render an Image from an URL -->
+<!-- <img [src]="img" alt="ImageOne"> -->
+<!-- Ahora vamos a decirle que en caso de que no este la imagen pongamos una por defecto -->
+<img [src]="img" alt="ImageOne" *ngIf="img; else imageDefault">
+<ng-template #imageDefault>
+  <img src="../../../assets/images/carOne.jpg" alt="defaultImage">
+</ng-template>
