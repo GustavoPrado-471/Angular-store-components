@@ -1,7 +1,15 @@
 <!-- Este componente va a estar desing for render an Image from an URL -->
 <!-- <img [src]="img" alt="ImageOne"> -->
 <!-- Ahora vamos a decirle que en caso de que no este la imagen pongamos una por defecto -->
-<img [src]="img" alt="ImageOne" *ngIf="img; else imageDefault">
+<!-- <img [src]="img" alt="ImageOne" *ngIf="img; else imageDefault">
 <ng-template #imageDefault>
   <img src="../../../assets/images/carOne.jpg" alt="defaultImage">
+</ng-template> -->
+<!-- Esto nos soluciona dos cosas, uno si la imagen es correcta la pinta y dos: Si no hay nada en la URL pinta defaultImage
+Pero no nos soluciona el caso de que la URL venga mal para eso hacemos lo siguiente -->
+
+<img width="200px" (load)="correctImage()" (error)="imageError()" [src]="img" alt="ImageOne" *ngIf="img; else elseImg" >
+<ng-template #elseImg>
+  <img [src]="imageDefault" alt="elseImg">
 </ng-template>
+<!-- Agregamos el evento error -->

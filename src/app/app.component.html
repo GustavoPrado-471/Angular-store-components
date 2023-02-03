@@ -1,4 +1,11 @@
 <!-- Ahora vamos a hacerlo dinamico -->
+<div>
 <p>Componente Padre: <input type="text" [(ngModel)]="imgParent" /></p>
 <!-- Mnadamos ese valor desde el padre al Hijo con un Model para que se este actualizando al mismo tiempo -->
-<app-img [img]="imgParent"></app-img>
+<app-img [img]="imgParent" (emmitLoader)="emmitLoaderParent($event)"></app-img>
+</div>
+
+<div>
+<!-- Importa el segundo componente -->
+<app-product></app-product>
+</div>
