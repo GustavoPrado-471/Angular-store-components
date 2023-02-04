@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductsService } from '../../service/products.service';
 
 @Component({
   selector: 'app-product',
@@ -6,36 +7,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent {
+  constructor(private productsService: ProductsService) {}
   products = [
     {
-      name: 'Product One',
-      image: '../../../assets/images/carOne.jpg',
-      price: 500,
-    },
-    {
-      name: 'Product Two',
-      image: '../../../assets/images/carOne.jpg',
-      price: 500,
-    },
-    {
-      name: 'Product Three',
-      image: '../../../assets/images/carOne.jpg',
-      price: 500,
-    },
-    {
-      name: 'Product Four',
-      image: '../../../assets/images/carOne.jpg',
-      price: 500,
-    },
-    {
-      name: 'Product Five',
-      image: '../../../assets/images/carOne.jpg',
-      price: 500,
-    },
-    {
-      name: 'Product Six',
-      image: '../../../assets/images/carOne.jpg',
-      price: 500,
-    },
+      title: '',
+      category: '',
+      description: '',
+      id: 0,
+      image: '',
+      price: 0,
+    }
   ];
+
+  today = new Date();
+  dateX = new Date(2023,0,27);
+
+  ngOnInit(): void {
+    // En esta parte podemos manejar las peticiones asincronas
+    this.productsService.getProductsAPI().subscribe(
+      data => {
+        this.products = data;
+      }
+    )
+  }
 }

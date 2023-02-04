@@ -1,7 +1,26 @@
+<!-- Use of pipe for format date -->
+<div>
+  <p>La fecha de hoy es: {{today | date:'short'}}</p>
+  <!-- Puedes usar los formatos de Angular o poner tu propio formato (Siguiendo las reglas de la doc)-->
+  <p>Fecha Test: {{ dateX | date: 'dd/MM/yyyy'}}</p>
+
+  <!-- Por ultimo vemos el pipe de UPERCASE -->
+  <p>{{'Hola mundo en Mayusculas' | uppercase }}</p>
+
+  <!-- Usamos nuestro propio pipe -->
+
+  <p>{{'Hola mundo' | reverse}}</p>
+
+  <!-- Hace cuanto tiempo paso esto, con un pipe propio -->\
+  <p>Fecha Time Ago: {{ today | timeAgo}}</p>
+
+</div>
+
 <div class="productsGrid">
 <div *ngFor="let product of products">
   <img [src]="product.image" alt="Image" width="200" />
-  <h2>${{ product.price }}</h2>
-  <p>{{ product.name }}</p>
+  <h2>{{ product.price | currency:'MXN'}}</h2>
+  <p>{{ product.title }}</p>
+  <p appHighline>{{product.description}}</p>
 </div>
 </div>
